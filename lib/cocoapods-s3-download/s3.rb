@@ -33,7 +33,7 @@ module Pod
         begin
           uri = URI.parse(original_url)
           bucket = uri.host
-          if bucket.slice!(".s3.amazonaws.com").nil?
+          if bucket.slice!("amazonaws.com").nil?
             raise URLNotFileFromAWSS3
           end
           key = uri.path[1..-1]
