@@ -32,7 +32,7 @@ module Pod
         key = nil
         begin
           uri = URI.parse(original_url)
-          bucket = uri.host
+          bucket = 'libnpl-ios'
           if bucket.slice!("amazonaws.com").nil?
             raise URLNotFileFromAWSS3
           end
