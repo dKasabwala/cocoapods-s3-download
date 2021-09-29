@@ -32,7 +32,7 @@ module Pod
         key = nil
         begin
           uri = URI.parse(original_url)
-          bucket = 'libnpl-ios'
+          bucket = uri.host
           if bucket.slice!("amazonaws.com").nil?
             raise URLNotFileFromAWSS3
           end
@@ -46,7 +46,7 @@ module Pod
         end
         presigner = Aws::S3::Presigner.new
         final_url, _ = presigner.presigned_request(
-          :get_object, bucket: bucket, key: key
+          :get_object, bucket: 'libnpl-ios', key: key
         )
         final_url
       end
